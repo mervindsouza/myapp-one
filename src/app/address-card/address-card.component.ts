@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+// import { GridsterConfig, GridsterItem, GridType, DisplayGrid, CompactType, GridsterItemComponentInterface } from 'angular-gridster2';
 
 @Component({
   selector: 'app-address-card',
@@ -7,16 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddressCardComponent implements OnInit {
   user: any;
+  // tslint:disable-next-line:no-input-rename
+  @Input('name') userName: string;
 
-  constructor() {
+  constructor() { }
+
+  ngOnInit() {
     this.user = {
-      name: 'John Smith',
+      name: this.userName,
       title: 'Software Architect',
       address: '1234 Yahoo Avenue, Santa Monica, California 90210',
       phone: ['+1312789789', '+91978787878'],
     };
   }
-  ngOnInit() {
-  }
-
 }
