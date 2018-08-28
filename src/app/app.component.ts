@@ -11,6 +11,8 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent implements OnInit {
   user: User;
   inputText = 'Initial Value';
+  githubuser: string;
+  response: any;
 
   // constructor() {
   //   // this.user = new User();
@@ -20,12 +22,24 @@ export class AppComponent implements OnInit {
   //   // this.user.phone = ['+13123123122', '8672341234'];
   // }
 
-  constructor(private svc: TestService, private http: HttpClient) {
-    this.svc.printToConsole('Printing from App Component');
+  // constructor(private svc: TestService, private http: HttpClient) {
+  //   this.svc.printToConsole('Printing from App Component');
+  // }
+
+  constructor(private http: HttpClient) {
+
   }
 
   ngOnInit() {
-    let obs = this.http.get('https://api.github.com/users/mervindsouza');
-    obs.subscribe((response) => console.log(response));
+    // const obs = this.http.get('https://api.github.com/users/mervindsouza');
+    // obs.subscribe((response) => console.log(response));
+  }
+
+  SearchGithubUsername() {
+    this.http.get('https://api.github.com/users/' + this.githubuser)
+      .subscribe((response) => {
+        this.response = response;
+        console.log(this.response);
+      });
   }
 }

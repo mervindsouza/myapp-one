@@ -1,6 +1,17 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
+<!-- <div style="text-align:center">
   <app-account></app-account>
   <app-address-card [user]="user"></app-address-card>
 </div>
-<input type="text" [(ngModel)]="inputText">{{inputText}}
+<input type="text" [(ngModel)]="inputText">{{inputText}} -->
+<br />
+<br />
+<br /> Username :
+<input type="text" name="mervindsouza" value="mervindsouza" [(ngModel)]="githubuser">
+<button (click)="SearchGithubUsername()">Get Data</button>
+<div *ngIf="response">
+<p>Login Name: {{response.login}}</p>
+<p>Name: {{response.name}}</p>
+<p>Blog: {{response.blog}}</p>
+<p>Bio: {{response.bio}}</p>
+</div>
